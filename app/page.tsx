@@ -1,8 +1,14 @@
-"use client";
+
 import { Signout } from "@/components/Signout";
+import { redirect } from "next/dist/server/api-utils";
 
 
-export default function Home() {
+export default async function Home() {
+
+  const session = await useSession();
+  if(!session) redirect("/sign-in");
+
+
   return (
     <>
     <div>
